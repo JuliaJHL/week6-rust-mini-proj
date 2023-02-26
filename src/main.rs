@@ -2,10 +2,9 @@ use std::{env};
 use image::{GenericImageView, ImageBuffer, ImageFormat, io::Reader as ImageReader};
 
 fn main() {
-    println!("Welcome to Image Resizing!");
-    println!("Usage: cargo run <input_path> <output_path> <new_width>");
     let args: Vec<String> = env::args().collect();
     if args.len() != 4 {
+        println!("Welcome to Image Resizing!");
         println!("Usage: cargo run <input_path> <output_path> <new_width>");
         return;
     }
@@ -31,8 +30,8 @@ fn main() {
         img.get_pixel(x, y)
     });
 
-    let result = match resized_img.save_with_format(&output_path, ImageFormat::Png){
-        Ok(_) => println!("Image resized and saved successfully"),
+    let _result = match resized_img.save_with_format(&output_path, ImageFormat::Png){
+        Ok(_result) => println!("Image resized and saved successfully"),
         Err(e) => {
             println!("Error saving image: {}", e);
             return;
